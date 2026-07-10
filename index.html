@@ -34,24 +34,22 @@
     .hero {
       position: relative;
       width: 100%;
-      height: clamp(180px, 32vw, 320px);
-      overflow: hidden;
       background: #05050a;
+      line-height: 0;
     }
 
     .hero img {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      height: auto;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: auto 0 0;
-      height: 80px;
+      height: 12%;
+      max-height: 64px;
       background: linear-gradient(to bottom, transparent, var(--bg));
       pointer-events: none;
     }
