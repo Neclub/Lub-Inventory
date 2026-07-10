@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lub Inventory</title>
+  <style>
+    :root {
+      --bg: #0b0e11;
+      --panel: #141820;
+      --panel-hover: #1a2030;
+      --text: #eef0f4;
+      --muted: #8b93a7;
+      --accent: #3b6fd4;
+      --link: #8cb4ff;
+      --border: #2a3140;
+      --gold: #c9a84c;
+      --gold-soft: rgba(201, 168, 76, 0.25);
+      --accent-soft: rgba(59, 111, 212, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font: 15px/1.5 "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: clamp(180px, 32vw, 320px);
+      overflow: hidden;
+      background: #05050a;
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+
+    header {
+      text-align: center;
+      padding: 32px 0 40px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    main {
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--panel-hover);
+      border-color: var(--gold);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        0 0 0 1px var(--gold-soft);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card p {
+      margin: 0;
+      flex: 1;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .card a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      padding: 10px 20px;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .card a:hover {
+      background: #4a82e8;
+      box-shadow: 0 0 16px var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .card a:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 2px;
+    }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 0 16px 40px;
+      }
+
+      header {
+        padding: 24px 0 32px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <img src="Banner.png" alt="Lub's EverQuest Tools">
+  </div>
+
+  <div class="page">
+    <header>
+      <h1>Lub Inventory</h1>
+      <p>Inventory Tracking</p>
+    </header>
+
+    <main>
+      <section class="cards" aria-label="Inventory reports">
+        <article class="card">
+          <h2>Bristlebane Team Inventory</h2>
+          <p>Inventory and progression report for the Bristlebane team.</p>
+          <a href="Bristlebane_Team Inventory.html">Open Report</a>
+        </article>
+
+        <article class="card">
+          <h2>Xegony Team Inventory</h2>
+          <p>Inventory and progression report for the Xegony team.</p>
+          <a href="Xegony_Team Inventory.html">Open Report</a>
+        </article>
+
+        <!-- Add future report cards here -->
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Lub Inventory</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
