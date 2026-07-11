@@ -35,19 +35,18 @@
     .hero {
       position: relative;
       width: 100%;
-      max-height: min(36vh, 400px);
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
       background: #05050a;
       line-height: 0;
     }
 
     .hero img {
       display: block;
-      width: 100%;
+      width: auto;
       height: auto;
+      max-width: 100%;
       max-height: min(36vh, 400px);
-      object-fit: cover;
-      object-position: center;
     }
 
     .hero::after {
