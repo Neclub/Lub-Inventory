@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lub Inventory - EverQuest team inventory and progression reports.">
   <title>Lub Inventory</title>
   <style>
     :root {
@@ -34,18 +35,19 @@
     .hero {
       position: relative;
       width: 100%;
-      display: flex;
-      justify-content: center;
+      max-height: min(36vh, 400px);
+      overflow: hidden;
       background: #05050a;
       line-height: 0;
     }
 
     .hero img {
       display: block;
-      width: auto;
+      width: 100%;
       height: auto;
-      max-width: 100%;
       max-height: min(36vh, 400px);
+      object-fit: cover;
+      object-position: center;
     }
 
     .hero::after {
@@ -65,7 +67,7 @@
 
     header {
       text-align: center;
-      padding: 32px 0 40px;
+      padding: 28px 0 36px;
       animation: fadeUp 0.6s ease both;
     }
 
@@ -96,11 +98,14 @@
     .card {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       padding: 24px;
       background: var(--panel);
       border: 1px solid var(--border);
+      border-left: 3px solid var(--gold-soft);
       border-radius: 8px;
+      color: inherit;
+      text-decoration: none;
       transition:
         transform 0.25s ease,
         border-color 0.25s ease,
@@ -115,6 +120,24 @@
       box-shadow:
         0 8px 24px rgba(0, 0, 0, 0.35),
         0 0 0 1px var(--gold-soft);
+    }
+
+    .card:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 2px;
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(201, 168, 76, 0.08);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .card h2 {
@@ -132,33 +155,35 @@
       line-height: 1.55;
     }
 
-    .card a {
+    .card-cta {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 6px;
       align-self: flex-start;
+      margin-top: 4px;
       padding: 10px 20px;
       border-radius: 6px;
       background: var(--accent);
       color: #fff;
-      font: inherit;
       font-weight: 600;
-      text-decoration: none;
       transition:
         background 0.2s ease,
         box-shadow 0.2s ease,
         transform 0.2s ease;
     }
 
-    .card a:hover {
-      background: #4a82e8;
-      box-shadow: 0 0 16px var(--accent-soft);
-      transform: translateY(-1px);
+    .card-cta::after {
+      content: "\2192";
+      transition: transform 0.2s ease;
     }
 
-    .card a:focus-visible {
-      outline: 2px solid var(--link);
-      outline-offset: 2px;
+    .card:hover .card-cta {
+      background: #4a82e8;
+      box-shadow: 0 0 16px var(--accent-soft);
+    }
+
+    .card:hover .card-cta::after {
+      transform: translateX(3px);
     }
 
     footer {
@@ -195,6 +220,26 @@
         padding: 20px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      header,
+      main,
+      footer,
+      .card,
+      .card-cta,
+      .card-cta::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .card:hover {
+        transform: none;
+      }
+
+      .card:hover .card-cta::after {
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -210,19 +255,21 @@
 
     <main>
       <section class="cards" aria-label="Inventory reports">
-        <article class="card">
+        <!-- REPORT_CARDS_START -->
+        <a class="card" href="Bristlebane_Team_Inventory.html">
+          <span class="card-badge">Bristlebane</span>
           <h2>Bristlebane Team Inventory</h2>
           <p>Inventory and progression report for the Bristlebane team.</p>
-          <a href="Bristlebane_Team_Inventory.html">Open Report</a>
-        </article>
+          <span class="card-cta">Open Report</span>
+        </a>
 
-        <article class="card">
+        <a class="card" href="Xegony_Team_Inventory.html">
+          <span class="card-badge">Xegony</span>
           <h2>Xegony Team Inventory</h2>
           <p>Inventory and progression report for the Xegony team.</p>
-          <a href="Xegony_Team_Inventory.html">Open Report</a>
-        </article>
-
-        <!-- Add future report cards here -->
+          <span class="card-cta">Open Report</span>
+        </a>
+        <!-- REPORT_CARDS_END -->
       </section>
     </main>
 
